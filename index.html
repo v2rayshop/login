@@ -72,13 +72,47 @@
     </style>
 </head>
 <body>
-    <form action="#" method="post">
-        <h1>Login</h1>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
-    </form>
+   <form action="#" method="post">
+    <h1>Login</h1>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+    <button id="myButton" type="submit">Login</button>
+</form>
+
+<script>
+document.getElementById("myButton").addEventListener("click", function(event){
+    event.preventDefault(); // prevent form from submitting
+    
+    // Get user input
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    
+    // Create an object for the request body
+    const requestBody = { email: email, password: password };
+    
+    // Send a POST request to the server to validate the credentials
+    fetch('http://example.com/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to the destination page
+            window.location.href = "http://example.com/destination-page";
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+});
+</script>
+
 </body>
 </html>
