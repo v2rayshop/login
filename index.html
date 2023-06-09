@@ -72,47 +72,40 @@
     </style>
 </head>
 <body>
-   <form action="#" method="post">
+<form action="#" method="post" onsubmit="return validateForm()">
     <h1>Login</h1>
     <label for="email">Email</label>
     <input type="email" id="email" name="email" required>
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
-    <button id="myButton" type="submit">Login</button>
+    <button type="submit">Login</button>
 </form>
 
 <script>
-document.getElementById("myButton").addEventListener("click", function(event){
-    event.preventDefault(); // prevent form from submitting
-    
+function validateForm() {
     // Get user input
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     
-    // Create an object for the request body
-    const requestBody = { email: email, password: password };
+    // Perform validation
+    if (email === "" || password === "") {
+        alert("Please enter your email and password.");
+        return false;
+    }
     
-    // Send a POST request to the server to validate the credentials
-    fetch('http://example.com/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestBody)
-    })
-    .then(response => {
-        if (response.ok) {
-            // Redirect to the destination page
-            window.location.href = "http://example.com/destination-page";
-        } else {
-            throw new Error('Network response was not ok.');
-        }
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
-});
+    // Check if the email is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid Gmail address.");
+        return false;
+    }
+    
+    // Redirect to the destination page
+    window.location.replace("http://example.com/destination-page");
+    return true;
+}
 </script>
+
 
 </body>
 </html>
