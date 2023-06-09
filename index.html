@@ -72,31 +72,28 @@
     </style>
 </head>
 <body>
-<form method="post" onsubmit="return validateForm()">
-    <h1>Login</h1>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Login</button>
+<form action="/login" method="post">
+  <h1>Login</h1>
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+  <button type="submit">Login</button>
 </form>
 
 <script>
-function submitForm() {
-    // Get user input
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    // Redirect to the destination page
-    window.location.replace("http://example.com/destination-page");
-
-    // Prevent the form from submitting normally
-    return false;
+function checkEmail() {
+  var email = document.getElementById("email").value;
+  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(email)) {
+    window.location.href = "https://www.google.com";
+  } else {
+    alert("Invalid email address.");
+  }
 }
 
-
+document.getElementById("submit").addEventListener("click", checkEmail);
 </script>
-
 
 </body>
 </html>
