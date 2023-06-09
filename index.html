@@ -34,7 +34,7 @@
             box-sizing: border-box;
         }
         
-        button[type=submit] {
+        button {
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -78,7 +78,31 @@
 <input type="email" id="email" name="email" required>
 <label for="password">Password</label>
 <input type="password" id="password" name="password" required>
-<button onclick="window.location.href='https://www.google.com/'">Login</button>
+<button onclick="checkLogin()">Login</button>
 		</div>
+	<script>
+		function checkLogin() {
+  // Get the email and password values
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  // Check if the email is valid
+  var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}$/;
+  if (!regex.test(email)) {
+    alert("Invalid email address");
+    return;
+  }
+
+  // Check if the password is valid
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return;
+  }
+
+  // Redirect to the Google website
+  window.location.href = 'https://www.google.com/';
+}
+
+	</script>
 </body>
 </html>
