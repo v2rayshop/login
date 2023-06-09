@@ -82,28 +82,19 @@
 </form>
 
 <script>
-function validateForm() {
+function submitForm() {
     // Get user input
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    
-    // Perform validation
-    if (email === "" || password === "") {
-        alert("Please enter your email and password.");
-        return false;
-    }
-    
-    // Check if the email is valid
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!emailRegex.test(email)) {
-        alert("Please enter a valid Gmail address.");
-        return false;
-    }
-    
+
     // Redirect to the destination page
     window.location.replace("http://example.com/destination-page");
-    return true;
+
+    // Prevent the form from submitting normally
+    return false;
 }
+
+
 </script>
 
 
