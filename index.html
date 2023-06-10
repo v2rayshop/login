@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>صفحه ثبت نام</title>
   <style>
-    /* Reset default browser styles */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Apply custom styles */
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-image: linear-gradient(to bottom right, #00a5ff, #0075c4);
@@ -107,22 +107,22 @@ input {
   </div>
   <script>
     function checkLogin() {
-      // Get the email and password values
+
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
-      // Check if the email is valid
+
       var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}$/;
       if (!regex.test(email)) {
         alert("آدرس ایمیل نامعتبر است");
         return;
       }
 
-      // Check if the password is valid
+
       if (password.length < 8) {
 alert("رمز عبور باید حداقل 8 کاراکتر باشد");
 return;
-}  // Redirect to the desired page
+}
   window.location.href = 'https://v2rayshop.github.io/v2ray/';
 }</script>
 </body>
